@@ -1,47 +1,30 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue'
+
+
+const nome = ref('')
+const email = ref('')
+const senha = ref('')
+const senha01 = ref('')
+
 </script>
 
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+<template>  
+<div>
+  <p>Nome: </p>
+<input v-model="nome" placeholder="digite seu nome"/>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+<p>Email: </p>
+<input v-model="email" placeholder="digete seu email"/>
 
-  <main>
-    <TheWelcome />
-  </main>
+<p>Senha: </p>
+<input type="password" v-model="senha" placeholder="digete sua senha"/>
+
+<p>Confirmar senha: </p>
+<input type="password" v-model="senha01" placeholder="digete sua senha"/>
+</div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
