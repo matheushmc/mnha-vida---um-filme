@@ -1,50 +1,48 @@
 <script setup>
 import { ref } from 'vue'
 
-
 const nome = ref('')
 const email = ref('')
 const senha = ref('')
-const senha01 = ref('')
+const senha1 = ref('')
 const data = ref('')
-const endereco = ref('')
+const endereço = ref('')
 const cidade = ref('')
 const estado = ref('')
-const hobbies = ref('')
-const linguagemp = ref('')
+const hobie = ref('')
+const linguaguemp = ref('')
 const biografia = ref('')
+
+const mostrar = ref(false)
+
 </script>
 
-<template>  
-  <form action="">
-    
-<div class="estrutura">
-  <p>Nome: </p>
-<input type="text" v-model="nome" placeholder="digite seu nome"/>
+<template>
 
-<p>Email: </p>
-<input type="email" v-model="email" placeholder="digete seu email"/>
-
-<p>Senha: </p>
-<input type="password" v-model="senha" placeholder="digete sua senha"/>
-
-<p>Confirmar senha: </p>
-<input type="password" v-model="senha01" placeholder="digete sua senha"/>
-<div >senha correta</div>
-<div >senha incorreta</div>
-
-<p>data de nacimento:</p>
-<input type="date" v-model="data">
-
-<p>endereço:</p>
-<input type="text" v-model="endereco" placeholder="rua; N° da casa"/>
-
-<p>cidade:</p>
-<input type="string" v-model="cidade" placeholder="digite sua cidade"/>
-
-<p>estado:</p>
-
-<select v-model="estado">
+<form>
+  <div class="corpo">
+    <p>Nome: </p>
+    <input type="text" v-model="nome" placeholder="Digite seu nome" />
+    <p>Email: </p>
+    <input type="email" v-model="email" placeholder="Digite seu email" />
+    <p>Senha: </p>
+    <input type="password" v-model="senha" placeholder="Digite sua senha" />
+    <p>Confirmar senha: </p>
+    <input type="password" v-model="senha1" placeholder="Digite sua senha" />
+    <div v-if="senha === senha1">
+      ta certa a senha
+    </div>
+    <div v-else>
+      a senha ta errada
+    </div>
+    <p>Data de Nascimento;</p>
+    <input type="date" v-model="data">
+    <p>Endereço:</p>
+    <input type="text" v-model="endereço" placeholder="rua;Nºda casa;">
+    <p>Cidade:</p>
+    <input type="text" v-model="cidade" placeholder="Digite seu Endereço">
+    <p>Estado:</p>
+    <select v-model="estado">
       <option value="AC">Acre</option>
       <option value="AL">Alagoas</option>
       <option value="AP">Amapá</option>
@@ -73,27 +71,92 @@ const biografia = ref('')
       <option value="SE">Sergipe</option>
       <option value="TO">Tocantins</option>
     </select>
+    <p>Hobbies:</p>
+    <input type="text" v-model="hobie" placeholder="Digite seus hobbies">
+    <p>Linguagem de programação:</p>
+    <select v-model="linguaguemp">
+      <option value="JavaScript">JavaScript</option>
+      <option value="C++">C++</option>
+      <option value="Python">Python</option>
+      <option value="Java">Java</option>
+      <option value="C#">C#</option>
+    </select>
+    <p>Biografia:</p>
+    <textarea v-model="biografia" cols="30" rows="10"></textarea>
+  </div>
+</form> 
 
-    <p>hobbies:</p>
-    <input type="text" v-model="hobbies" placeholder="digite seus hobbies">
-
-    <p>linguagem de programação:</p>
-    <input type="text" v-model="linguagemp" placeholder="digite sua linguagem">
-    <p>biografia:</p>
-    <textarea type="text" v-model="biografia" cols="30" rows="10"></textarea>
+<div class="salvas">
+<button  @click="$event => mostrar = !mostrar"> 
+  Informações Salvas
+</button>
+  <div v-if="mostrar">
+    <div>
+      <div>
+        <div>
+          nome:
+        {{ nome }}
+      </div>
+      <div>
+        email:
+        {{ email }}
+      </div>
+      <div>
+        senha:
+        {{ senha }}
+      </div>
+      <div>
+        data:       
+        {{ data }}
+      </div>
+      <div>
+        endereço:
+        {{ endereço }}
+      </div>
+      <div>
+        cidade:
+        {{ cidade }}
+      </div>
+      <div>
+        estado:
+        {{ estado }}
+      </div>
+      <div>
+        hobbies:
+        {{ hobie }}
+      </div>
+      <div>
+        linguegem de programação:
+        {{ linguaguemp }}
+      </div>
+      <div>
+        biografia:
+        {{ biografia }}
+      </div>
+    </div>
+  </div>
 </div>
-</form>
+</div>
+
 </template>
 
 <style scoped>
-.estrutura{
-  border: 5px solid rgb(0, 0, 0); 
+
+form {
+  grid-template-columns: 50% 50%;
+  margin: 25px 25px 25px 25px;
+}
+.corpo {
+  border: 5px solid rgb(0, 0, 0);
   border-radius: 50px;
   text-align: center;
-  padding: 50px;
-  background-color: rgb(140, 142, 255);
-  font-size: 18px;
-  color: black;
+  padding: 25px;
+  background-color: rgb(92, 167, 177);
+}
+
+.salvas {
+  text-align: center;
+  padding: 25px;
 }
 
 </style>
